@@ -29,7 +29,7 @@ server.post('/hobbits', (req,res) => {
   })
 })
 
-server.put('/:id', async (req,res) => {
+server.put('/hobbits/:id', async (req,res) => {
   const { id } = req.params;
   const changes = req.body;
 
@@ -47,7 +47,7 @@ server.put('/:id', async (req,res) => {
   }
 })
 
-server.delete('/:id', async (req,res) => {
+server.delete('/hobbits/:id', async (req,res) => {
   const { id } = req.params;
 
   try {

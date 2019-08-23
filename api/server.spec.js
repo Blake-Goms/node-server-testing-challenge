@@ -82,17 +82,37 @@ describe('server', () => {
         
     })
 
-    // describe('PUT /:id', () => {
-    //     it('should update a name', async() => {
-            
-    //         await request(server).put(`${1}`)
-    //         .send([
-    //             {
-    //                 name: 'aragorn'
-    //             }
-    //         ])
-    //         const updatedChar = await db('hobbits');
-    //         expect(res.status).toBe(200);
-    //     })
-    // })
+    describe('PUT request', () => {
+        it('should update a name', () => {            
+            return request(server)
+            .put("/hobbits/1")
+            .send(
+                {
+                    name: 'aragorn'
+                }
+            )
+            .then(res => {
+                expect(res.status).toBe(200);
+            })
+        })
+    })
+
+    describe("DELETE request", ()=>{
+        it("successful delete user by ID", ()=>{
+            return request(server)
+            .delete("/hobbits/1")
+            .then(res=>{
+                expect(res.status).toBe(200)
+            })
+        })
+        //intentional fail
+        // it("unsuccessful deletes user by ID", ()=>{
+        //     return request(server)
+        //     .delete("/hobbits/999999")
+        //     .then(res=>{
+        //         expect(res.status).toBe(200)
+        //         expect(res.body).toBe(0)
+        //     })
+        // })
+    })
 })
